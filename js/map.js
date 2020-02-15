@@ -3,13 +3,13 @@
 (function () {
   const map = document.querySelector('.map');
   const mapPins = document.querySelector('.map__pins');
+  const mapPin = document.querySelector('.map__pin');
+  const mapPinMain = document.querySelector('.map__pin--main');
   const mapOverlay = document.querySelector('.map__overlay');
   const adsArray = [];
-  const mapCardTemplate = document.getElementById('card').content;
-  const mapPinTemplate = document.getElementById('pin').content;
-  const mapPin = mapPinTemplate.querySelector('.map__pin');
-  const mapCard = mapCardTemplate.querySelector('.map__card');
-  const card = mapCard.cloneNode(true);
+  const mapCardTemplate = document.getElementById('card').content.querySelector('.map__card');
+  const mapPinTemplate = document.getElementById('pin').content.querySelector('.map__pin');
+  const card = mapCardTemplate.cloneNode(true);
 
 
   const titlesArray = ["Большая уютная квартира", "Маленькая неуютная квартира", "Огромный прекрасный дворец", "Маленький ужасный дворец", "Красивый гостевой домик", "Некрасивый негостеприимный домик", "Уютное бунгало далеко от моря", "Неуютное бунгало по колено в воде"];
@@ -23,13 +23,56 @@
   const photosArray = ["http://o0.github.io/assets/images/tokyo/hotel1.jpg", "http://o0.github.io/assets/images/tokyo/hotel2.jpg", "http://o0.github.io/assets/images/tokyo/hotel3.jpg"];
 
 
-
   const TypesMap = {
     PALACE: "Дворец",
     FLAT: "Квартира",
     HOUSE: "Дом",
     BUNGALO: "Бунгало"
   };
+
+
+  mapPinMain.addEventListener('mouseup', mouseUpHandler);
+  mapPin.addEventListener('mousedown', mouseDownHandler);
+
+  function mouseUpHandler() {
+    map.classList.remove('map--faded');
+  }
+
+  function mouseDownHandler(e) {
+    e.preventDefault();
+
+    let startCoords = {
+      x: e.clientX,
+      y: e.clientY
+    };
+
+    function mouseMoveHandler(e) {
+      e.preventDefault();
+
+      const shift = {
+        x: startCoords.x - e.clientX,
+        y: startCoords.y - e.clientY
+      };
+
+      startCoords = {
+        x: e.clientX,
+        y: e.clientY
+      }
+
+      mapPin.style.top = (mapPin.offsetTop - shift.y) + 'px';
+      mapPin.style.left = (mapPin.offsetLeft - shift.x) + 'px';
+    }
+
+    function mouseUpHandler(e) {
+      e.preventDefault();
+      document.removeEventListener('mousemove', mouseMoveHandler);
+      document.removeEventListener('mouseup', mouseUpHandler);
+    }
+
+    document.addEventListener('mousemove', mouseMoveHandler);
+    document.addEventListener('mouseup', mouseUpHandler);
+  }
+
 
   function getRandomNum(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -76,11 +119,11 @@
     return adsArray;
   }
 
-  map.classList.remove('map--faded');
-  const ads = generateAdsArray();
+
+  // const ads = generateAdsArray();
 
   function createPin(ad) {
-    const pin = mapPin.cloneNode(true);
+    const pin = mapPinTemplate.cloneNode(true);
     const pinImage = pin.querySelector('img');
     pin.style.left = `${ad.offer.location.x + pinImage.offsetWidth / 2}px`;
     pin.style.top = `${ad.offer.location.y - pinImage.offsetHeight}px`;
@@ -98,7 +141,7 @@
     mapPins.append(fragment);
   }
 
-  renderPins();
+  // renderPins();
 
   function addFeatures(ad) {
     const featuresFragment = document.createDocumentFragment();
@@ -152,6 +195,6 @@
   }
 
 
-  renderCard();
+  // renderCard();
 
 })();
