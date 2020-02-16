@@ -32,7 +32,7 @@
     map.classList.remove('map--faded');
     document.querySelector('.ad-form').classList.remove('ad-form--disabled');
     [...document.querySelectorAll('fieldset')].forEach(item => item.disabled = false);
-    window.map.renderPins();
+    window.backend.load(window.renderPins, window.utils.errorHandler);
   }
 
   let dragged = false;
@@ -79,7 +79,6 @@
     }
 
 
-
     function mouseUpHandler(e) {
       e.preventDefault();
       if (map.classList.contains('map--faded')) {
@@ -99,15 +98,16 @@
   }
 
 
-  function getPinCoords(pin, offsetX, offsetY) {
-    return `${parseInt(pin.style.left, 10) + offsetX}, ${parseInt(pin.style.top, 10) + offsetY}`;
+  function getPinCoords(offsetX, offsetY) {
+    return `${parseInt(mapPinMain.style.left, 10) + offsetX}, ${parseInt(mapPinMain.style.top, 10) + offsetY}`;
   };
 
   function getAddress() {
     return map.classList.contains('map--faded')
-      ? getPinCoords(mapPinMain, MAIN_PIN_SIZE.WIDTH / 2, MAIN_PIN_SIZE.HEIGHT / 2)
-      : getPinCoords(mapPinMain, MAIN_PIN_SIZE.WIDTH / 2, MAIN_PIN_SIZE.HEIGHT + MAIN_PIN_SIZE.LEG);
+      ? getPinCoords(MAIN_PIN_SIZE.WIDTH / 2, MAIN_PIN_SIZE.HEIGHT / 2)
+      : getPinCoords(MAIN_PIN_SIZE.WIDTH / 2, MAIN_PIN_SIZE.HEIGHT + MAIN_PIN_SIZE.LEG);
   };
+
 
   window.drag = {
     getAddress: getAddress,
