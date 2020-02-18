@@ -13,61 +13,31 @@
   const checkin = document.querySelector("#timein");
   const checkout = document.querySelector("#timeout");
   const rooms = document.querySelector("#room_number");
+  const features = document.querySelectorAll('.feature__checkbox');
+  const description = document.querySelector("#description");
   const guests = document.querySelector("#capacity");
   const submitButton = document.querySelector('.ad-form__submit');
+  const form = document.querySelector('.ad-form');
 
-  let customValidityMessage = "";
-  type.addEventListener("change", syncTypeOption);
-  checkin.addEventListener("change", syncTime);
-  checkout.addEventListener("change", syncTime);
-  rooms.addEventListener('change', syncRoomOptions);
+  type.addEventListener("change", setMinPrice);
   submitButton.addEventListener('click', validateForm);
 
-  function syncTypeOption(e) {
+  function setMinPrice(e) {
     switch (e.target.value) {
       case 'bungalo':
-        price.placeholder = 0;
         price.min = 0;
         break;
       case 'flat':
-        price.placeholder = 1000;
         price.min = 1000;
         break;
       case 'house':
-        price.placeholder = 5000;
         price.min = 5000;
         break;
       case 'palace':
-        price.placeholder = 10000;
         price.min = 10000;
         break;
     }
   }
-
-  function syncRoomOptions(e) {
-    switch (e.target.value) {
-      case '1':
-        guests.value = 1;
-        break;
-      case '2':
-        guests.value = 2;
-        break;
-      case '3':
-        guests.value = 3;
-        break;
-      case '100':
-        guests.value = 0;
-        break;
-    }
-  }
-
-
-  function syncTime(e) {
-    const value = e.target.value;
-    checkin.value = value;
-    checkout.value = value;
-  }
-
 
   function validateGuests() {
     if (RoomsCapacity[rooms.value].indexOf(+guests.value) === -1) {
@@ -106,14 +76,24 @@
   };
 
 
-  function checkValidity(element) {
-    if (customValidityMessage) {
-      element.style.outline = '2px solid red';
-      element.setCustomValidity(customValidityMessage);
-    } else {
-      element.setCustomValidity("");
-      element.style.outline = '';
-    }
+  function resetSettings() {
+    price.value = null;
+    title.value = null;
+    type.value = 'flat';
+    description.value = null;
+    checkin.value = "12:00";
+    checkout.value = "12:00";
+    window.drag.resetPinCoords();
+    [...features].forEach((feature) => feature.checked = false);
+
   }
+
+  form.addEventListener('submit', e => {
+    window.backend.save(new FormData(form), function () {
+      resetSettings();
+    }, window.utils.errorHandler);
+    e.preventDefault();
+  });
+
 
 })();

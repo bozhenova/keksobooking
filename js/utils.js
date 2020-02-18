@@ -15,7 +15,7 @@
       function (errorMessage) {
         const node = document.createElement('div');
         node.classList.add('error-message');
-        node.style = 'display: block; z-index: 100; margin: 0 auto; text-align: center; background-color: red; padding: 15px;';
+        node.style = 'display: block; z-index: 100; margin: 0 auto; text-align: center; background-color: red; color: white; padding: 15px;';
         node.style.position = 'absolute';
         node.style.left = 0;
         node.style.right = 0;

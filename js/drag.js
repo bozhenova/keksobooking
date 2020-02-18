@@ -9,14 +9,14 @@
 
   const map = document.querySelector('.map');
   const mapPinMain = map.querySelector('.map__pin--main');
-  const adAddress = document.querySelector('#address');
+  const address = document.querySelector('#address');
   const mapOverlay = document.querySelector('.map__overlay');
 
   const startPosition = {
     x: mapPinMain.style.left,
     y: mapPinMain.style.top
   };
-  adAddress.value = getAddress();
+  address.value = getAddress();
 
   const DragLimits = {
     MIN_X: 0 - MAIN_PIN_SIZE.WIDTH / 2,
@@ -75,7 +75,7 @@
       } else {
         mapPinMain.style.left = `${mapPinMain.offsetLeft - shift.x}px`;
       }
-      adAddress.value = getAddress();
+      address.value = getAddress();
     }
 
 
@@ -89,7 +89,7 @@
         map.style.cursor = "move";
         mapPinMain.style.cursor = "move";
       }
-      adAddress.value = getAddress();
+      address.value = getAddress();
       document.removeEventListener('mousemove', mouseMoveHandler);
       document.removeEventListener('mouseup', mouseUpHandler);
     }
@@ -112,10 +112,11 @@
   window.drag = {
     getAddress: getAddress,
     turnOnActiveMode: turnOnActiveMode,
+    // getAddress: getAddress,
     resetPinCoords: function () {
       mapPinMain.style.top = startPosition.y;
       mapPinMain.style.left = startPosition.x;
-      adAddress.value = getAddress();
+      address.value = getAddress();
     }
   };
 
