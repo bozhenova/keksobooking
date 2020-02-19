@@ -12,6 +12,7 @@
   const address = document.querySelector('#address');
   const mapOverlay = document.querySelector('.map__overlay');
 
+
   const startPosition = {
     x: mapPinMain.style.left,
     y: mapPinMain.style.top
@@ -32,8 +33,9 @@
     map.classList.remove('map--faded');
     document.querySelector('.ad-form').classList.remove('ad-form--disabled');
     [...document.querySelectorAll('fieldset')].forEach(item => item.disabled = false);
-    window.backend.load(window.renderPins, window.utils.errorHandler);
+    window.backend.load(window.map.successHandler, window.utils.errorHandler);
   }
+
 
   let dragged = false;
   function mouseDownHandler(e) {
@@ -112,7 +114,6 @@
   window.drag = {
     getAddress: getAddress,
     turnOnActiveMode: turnOnActiveMode,
-    // getAddress: getAddress,
     resetPinCoords: function () {
       mapPinMain.style.top = startPosition.y;
       mapPinMain.style.left = startPosition.x;

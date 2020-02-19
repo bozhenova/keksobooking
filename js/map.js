@@ -12,12 +12,13 @@
   const mapCardTemplate = document.querySelector('#card').content.querySelector('.map__card');
 
   const card = mapCardTemplate.cloneNode(true);
-  const popupClose = card.querySelector('.popup__close');
 
-  popupClose.addEventListener('click', (e) => {
-    e.preventDefault();
-    card.classList.add('hidden');
-  });
+  function successHandler(ads) {
+    window.pin.renderPins(ads);
+    window.filters.addFilters(ads);
+  }
+
+
 
   function addFeatures(ad) {
     card.querySelector('.popup__features').innerHTML = '';
@@ -61,14 +62,28 @@
     return card;
   }
 
-
-  window.renderCard = function (ad) {
+  function renderCard(ad) {
     const fragment = document.createDocumentFragment();
     const card = createCard(ad);
     fragment.append(card);
     map.append(fragment);
+    const closeButton = map.querySelector('.popup__close');
+    closeButton.addEventListener('click', deleteCard);
   }
 
+  function deleteCard() {
+    let card = map.querySelector('.popup');
+    if (card) {
+      card.remove();
+    }
+  };
 
+
+  window.map = {
+    successHandler: successHandler,
+    renderCard: renderCard,
+    map: map,
+    deleteCard: deleteCard
+  }
 
 })();
