@@ -18,8 +18,6 @@
     window.filters.addFilters(ads);
   }
 
-
-
   function addFeatures(ad) {
     card.querySelector('.popup__features').innerHTML = '';
     const featuresFragment = document.createDocumentFragment();
@@ -75,6 +73,7 @@
     let card = map.querySelector('.popup');
     if (card) {
       card.remove();
+      closeButton.removeEventListener('click', deleteCard);
     }
   };
 

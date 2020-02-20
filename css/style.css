@@ -525,7 +525,7 @@ fieldset {
 
 .ad-form-header__drop-zone {
   height: 70px;
-  padding: 20px 10px 5px;
+  padding: 10px 10px 5px;
 
   text-align: center;
   font-size: 14px;
@@ -752,7 +752,7 @@ fieldset {
 .ad-form__drop-zone {
   width: 100%;
   height: 70px;
-  padding: 20px 10px 5px;
+  padding: 10px 10px 5px;
 
   text-align: center;
   font-size: 14px;

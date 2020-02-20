@@ -12,19 +12,18 @@
   const address = document.querySelector('#address');
   const mapOverlay = document.querySelector('.map__overlay');
 
-
-  const startPosition = {
-    x: mapPinMain.style.left,
-    y: mapPinMain.style.top
-  };
-  address.value = getAddress();
-
   const DragLimits = {
     MIN_X: 0 - MAIN_PIN_SIZE.WIDTH / 2,
     MAX_X: mapOverlay.offsetWidth - MAIN_PIN_SIZE.WIDTH / 2,
     MIN_Y: 180 - (MAIN_PIN_SIZE.HEIGHT + MAIN_PIN_SIZE.LEG),
     MAX_Y: 680 - (MAIN_PIN_SIZE.HEIGHT + MAIN_PIN_SIZE.LEG)
   };
+
+  const startPosition = {
+    x: mapPinMain.style.left,
+    y: mapPinMain.style.top
+  };
+  address.value = getAddress();
 
 
   mapPinMain.addEventListener('mousedown', mouseDownHandler);

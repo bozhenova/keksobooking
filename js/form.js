@@ -18,9 +18,14 @@
   const guests = document.querySelector("#capacity");
   const submitButton = document.querySelector('.ad-form__submit');
   const form = document.querySelector('.ad-form');
+  const uploadAvatarButton = document.querySelector('.ad-form-header__input')
+  const uploadPhotosButton = document.querySelector('.ad-form__input');
 
   type.addEventListener("change", setMinPrice);
   submitButton.addEventListener('click', validateForm);
+
+  uploadAvatarButton.addEventListener('change', window.utils.uploadImage);
+  uploadPhotosButton.addEventListener('change', window.utils.uploadPhotos);
 
   function setMinPrice(e) {
     switch (e.target.value) {
