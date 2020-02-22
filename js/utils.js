@@ -1,7 +1,6 @@
 "use strict";
 
 (function () {
-
   window.utils = {
     numberWithCommas:
       function (x) {
@@ -39,7 +38,7 @@
     uploadPhotos:
       function () {
         if (this.files && this.files[0]) {
-          const photoContainer = document.querySelector('.ad-form__photo-container');
+          const photoGallery = document.querySelector('.ad-form__photo-gallery');
           const fragment = document.createDocumentFragment();
           const adFormPhoto = document.querySelector('.ad-form__photo');
           for (let i = 0; i < this.files.length; i++) {
@@ -48,8 +47,10 @@
             photo.src = URL.createObjectURL(this.files[i]);
             photo.height = 70;
             photo.width = 70;
+            photo.className = "ad-form__image";
             photo.alt = 'Фотография жилья';
             photo.style.borderRadius = '5px';
+
             photoElement.append(photo);
             photo.onload = () => {
               URL.revokeObjectURL(this.src);
@@ -59,9 +60,11 @@
           if (adFormPhoto) {
             adFormPhoto.remove();
           }
-          photoContainer.append(fragment);
+          photoGallery.append(fragment);
+          let sortable = Sortable.create(photoGallery);
         }
-      }
+      },
+
   };
 
 

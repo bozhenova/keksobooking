@@ -31,6 +31,10 @@
   overflow: hidden;
 }
 
+.hold {
+  border: 2px solid #eee;
+}
+
 .hidden {
   display: none;
 }
@@ -731,6 +735,14 @@ fieldset {
   flex-wrap: wrap;
 }
 
+.ad-form__photo-gallery {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
 .ad-form__upload {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -784,6 +796,11 @@ fieldset {
 
   background-color: #e4e4de;
   border-radius: 5px;
+  cursor: pointer;
+}
+
+.hovered {
+  background-color: #ff5635;
 }
 
 .ad-form__element--submit {
