@@ -20,12 +20,14 @@
   const form = document.querySelector('.ad-form');
   const uploadAvatarButton = document.querySelector('.ad-form-header__input')
   const uploadPhotosButton = document.querySelector('.ad-form__input');
+  const resetButton = document.querySelector('.ad-form__reset');
 
   type.addEventListener("change", setMinPrice);
   submitButton.addEventListener('click', validateForm);
 
-  uploadAvatarButton.addEventListener('change', window.utils.uploadImage);
-  uploadPhotosButton.addEventListener('change', window.utils.uploadPhotos);
+  uploadAvatarButton.addEventListener('change', window.uploadImage);
+  uploadPhotosButton.addEventListener('change', window.uploadPhotos);
+  resetButton.addEventListener('click', resetSettings);
 
   function setMinPrice(e) {
     switch (e.target.value) {
@@ -90,6 +92,8 @@
     checkout.value = "12:00";
     window.drag.resetPinCoords();
     [...features].forEach((feature) => feature.checked = false);
+    window.deleteUploadedPhotos();
+    window.deleteUploadedAvatar();
 
   }
 

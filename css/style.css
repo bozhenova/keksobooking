@@ -513,6 +513,25 @@ fieldset {
 
   border-radius: 5px;
   background-color: #dadada;
+  cursor: pointer;
+}
+
+.ad-form-header__preview--delete {
+  position: relative;
+}
+
+.ad-form-header__preview--delete::after {
+  content: "×";
+  text-align: right;
+  position: absolute;
+  top: 37px;
+  left: 9px;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  color: black;
+  width: 100%;
+  display: block;
+  font-weight: normal;
 }
 
 .ad-form__field {
@@ -748,7 +767,7 @@ fieldset {
   display: -ms-flexbox;
   display: flex;
   margin-right: 10px;
-
+  margin-bottom: 10px;
   width: 150px;
   min-height: 70px;
 }
@@ -799,8 +818,21 @@ fieldset {
   cursor: pointer;
 }
 
-.hovered {
-  background-color: #ff5635;
+.ad-form__photo--delete {
+  position: relative;
+}
+
+.ad-form__photo--delete::before {
+  content: "×";
+  text-align: right;
+  position: absolute;
+  top: 5;
+  right: 5px;
+  font-size: 20px;
+  color: #e4e4de;
+  width: 100%;
+  display: block;
+  font-weight: normal;
 }
 
 .ad-form__element--submit {
