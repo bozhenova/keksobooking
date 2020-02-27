@@ -30,7 +30,7 @@
 
     load:
       function (onLoad, onError) {
-        const URL = 'https://js.dump.academy/keksobooking/datad';
+        const URL = 'https://js.dump.academy/keksobooking/data';
         const xhr = new XMLHttpRequest();
         xhr.responseType = 'json';
 
@@ -67,6 +67,6 @@
         xhr.open('GET', URL);
         xhr.send();
       }
-  }
+  };
 
 })();

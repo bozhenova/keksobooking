@@ -23,9 +23,8 @@
     x: mapPinMain.style.left,
     y: mapPinMain.style.top
   };
+
   address.value = getAddress();
-
-
   mapPinMain.addEventListener('mousedown', mouseDownHandler);
 
   function turnOnActiveMode() {
@@ -34,7 +33,6 @@
     [...document.querySelectorAll('fieldset')].forEach(item => item.disabled = false);
     window.backend.load(window.map.successHandler, window.errorHandler);
   }
-
 
   let dragged = false;
   function mouseDownHandler(e) {
@@ -79,7 +77,6 @@
       address.value = getAddress();
     }
 
-
     function mouseUpHandler(e) {
       e.preventDefault();
       if (map.classList.contains('map--faded')) {
@@ -98,16 +95,15 @@
     document.addEventListener('mouseup', mouseUpHandler);
   }
 
-
   function getPinCoords(offsetX, offsetY) {
     return `${parseInt(mapPinMain.style.left, 10) + offsetX}, ${parseInt(mapPinMain.style.top, 10) + offsetY}`;
-  };
+  }
 
   function getAddress() {
     return map.classList.contains('map--faded')
       ? getPinCoords(MAIN_PIN_SIZE.WIDTH / 2, MAIN_PIN_SIZE.HEIGHT / 2)
       : getPinCoords(MAIN_PIN_SIZE.WIDTH / 2, MAIN_PIN_SIZE.HEIGHT + MAIN_PIN_SIZE.LEG);
-  };
+  }
 
 
   window.drag = {

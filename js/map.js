@@ -87,12 +87,11 @@
     }
   }
 
-
   window.map = {
     successHandler: successHandler,
     renderCard: renderCard,
     map: map,
     deleteCard: deleteCard
-  }
+  };
 
 })();

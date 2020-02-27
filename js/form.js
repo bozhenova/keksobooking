@@ -52,7 +52,7 @@
     } else {
       guests.setCustomValidity('');
     }
-  };
+  }
 
   function validateCheckTime() {
     if (checkin.value !== checkout.value) {
@@ -60,7 +60,7 @@
     } else {
       checkout.setCustomValidity('');
     }
-  };
+  }
 
   function validatePrice() {
     if (price.validity.rangeUnderflow) {
@@ -74,14 +74,13 @@
     } else {
       price.setCustomValidity('');
     }
-  };
+  }
 
   function validateForm() {
     validateGuests();
     validateCheckTime();
     validatePrice();
-  };
-
+  }
 
   function resetSettings() {
     price.value = null;
@@ -94,22 +93,20 @@
     [...features].forEach((feature) => feature.checked = false);
     window.deleteUploadedPhotos();
     window.deleteUploadedAvatar();
-
   }
 
   form.addEventListener('submit', e => {
-    window.backend.save(new FormData(form), successHandler, window.errorHandler);
+    window.backend.save(new FormData(form), successSubmitHandler, window.errorHandler);
     e.preventDefault();
   });
 
-  function successHandler() {
+  function successSubmitHandler() {
     resetSettings();
     const successTemplate = document.querySelector('#success').content;
     const success = successTemplate.cloneNode(true);
     document.body.append(success);
-    document.addEventListener('click', closeSuccess);
+    document.addEventListener('click', closeSuccessOverlay);
     document.addEventListener('keydown', escPressHandler);
-
   }
 
   function escPressHandler() {
@@ -118,12 +115,12 @@
     }
   }
 
-  function closeSuccess() {
+  function closeSuccessOverlay() {
     const successOverlay = document.querySelector('.success');
     document.body.removeChild(successOverlay);
 
     document.removeEventListener('keydown', escPressHandler);
-    document.removeEventListener('click', closeSuccess);
+    document.removeEventListener('click', closeSuccessOverlay);
   }
 
 

@@ -1,6 +1,5 @@
 "use strict";
 (function () {
-
   const form = document.querySelector('.map__filters');
   const housingType = document.querySelector('#housing-type');
   const housingPrice = document.querySelector('#housing-price');
@@ -15,7 +14,7 @@
     return pins.filter(pin => {
       return pin.offer.type === housingType.value;
     });
-  };
+  }
 
   function sortByPrice(pins) {
     if (housingPrice.value === 'middle') {
@@ -37,7 +36,7 @@
     }
 
     return pins;
-  };
+  }
 
   function sortByRooms(pins) {
     if (housingRooms.value === 'any') {
@@ -47,7 +46,7 @@
     return pins.filter(pin => {
       return pin.offer.rooms === parseInt(housingRooms.value, 10);
     });
-  };
+  }
 
   function sortByGuests(pins) {
     if (housingGuests.value === 'any') {
@@ -57,7 +56,7 @@
     return pins.filter(pin => {
       return pin.offer.guests === parseInt(housingGuests.value, 10);
     });
-  };
+  }
 
   function sortByFeatures(pins) {
     let checkedFeatures = [...housingFeatures].
@@ -77,8 +76,7 @@
         return pin.offer.features.includes(feature);
       });
     });
-  };
-
+  }
 
   function sortData(data) {
     let filteredData = sortByType(data);
@@ -88,12 +86,12 @@
     filteredData = sortByFeatures(filteredData);
 
     return filteredData;
-  };
+  }
 
   window.filters = {
     addFilters:
       function (data) {
-        let changeFilters = function () {
+        function changeFilters() {
           if (window.map.map.querySelector('.popup')) {
             window.map.deleteCard();
           }
@@ -102,6 +100,6 @@
 
         form.addEventListener('change', window.debounce.bind(null, changeFilters));
       }
-  }
+  };
 
 })();

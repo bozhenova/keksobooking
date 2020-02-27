@@ -30,7 +30,7 @@
 
     document.removeEventListener('keydown', escPressHandler);
     document.removeEventListener('click', closeError);
-  };
+  }
 
 
 })();

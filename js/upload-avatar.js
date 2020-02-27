@@ -2,7 +2,7 @@
 
 (function () {
   const DEFAULT_AVATAR_SRC = 'img/muffin-grey.svg';
-  let avatarChooser = document.querySelector('#avatar');
+  const avatarChooser = document.querySelector('#avatar');
   const adFormAvatar = document.querySelector('.ad-form-header__preview');
   const avatar = document.querySelector('.ad-form-header__preview img');
 
@@ -25,7 +25,7 @@
     adFormAvatar.classList.remove('ad-form-header__preview--delete');
     adFormAvatar.removeEventListener('mouseenter', mouseEnterHandler);
     adFormAvatar.removeEventListener('mouseover', mouseLeaveHandler);
-  }
+  };
 
   function mouseEnterHandler() {
     adFormAvatar.classList.add('ad-form-header__preview--delete');

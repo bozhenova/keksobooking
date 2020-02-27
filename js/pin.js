@@ -3,7 +3,7 @@
 (function () {
   const ADS_QUANTITY = 5;
   const mapPins = document.querySelector('.map__pins');
-  const mapPinTemplate = document.querySelector('#pin').content.querySelector('.map__pin');
+  const mapPinTemplate = document.querySelector('#pin').content;
 
   window.pin = {
     createPin:
@@ -16,6 +16,7 @@
         pinImage.alt = `Заголовок объявления`;
         return pin;
       },
+
     renderPins:
       function (ads) {
         window.pin.deleteSimilarPins();
@@ -29,6 +30,7 @@
         }
         mapPins.append(fragment);
       },
+
     deleteSimilarPins:
       function () {
         mapPins.querySelectorAll('.map__pin:not(.map__pin--main)').forEach(pin => {
@@ -36,8 +38,5 @@
         });
       }
   };
-
-
-
 
 })();
