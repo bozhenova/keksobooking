@@ -98,11 +98,33 @@
   }
 
   form.addEventListener('submit', e => {
-    window.backend.save(new FormData(form), function () {
-      resetSettings();
-    }, window.utils.errorHandler);
+    window.backend.save(new FormData(form), successHandler, window.errorHandler);
     e.preventDefault();
   });
+
+  function successHandler() {
+    resetSettings();
+    const successTemplate = document.querySelector('#success').content;
+    const success = successTemplate.cloneNode(true);
+    document.body.append(success);
+    document.addEventListener('click', closeSuccess);
+    document.addEventListener('keydown', escPressHandler);
+
+  }
+
+  function escPressHandler() {
+    if (window.utils.isEscEvent) {
+      closeSuccess();
+    }
+  }
+
+  function closeSuccess() {
+    const successOverlay = document.querySelector('.success');
+    document.body.removeChild(successOverlay);
+
+    document.removeEventListener('keydown', escPressHandler);
+    document.removeEventListener('click', closeSuccess);
+  }
 
 
 })();

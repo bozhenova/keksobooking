@@ -32,7 +32,7 @@
     map.classList.remove('map--faded');
     document.querySelector('.ad-form').classList.remove('ad-form--disabled');
     [...document.querySelectorAll('fieldset')].forEach(item => item.disabled = false);
-    window.backend.load(window.map.successHandler, window.utils.errorHandler);
+    window.backend.load(window.map.successHandler, window.errorHandler);
   }
 
 

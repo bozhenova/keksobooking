@@ -9,7 +9,7 @@
         xhr.responseType = 'json';
 
         xhr.addEventListener('load', () => {
-          const errorMessage = document.querySelector('.error-message');
+          const errorMessage = document.querySelector('.error__message');
           if (xhr.status === 200) {
             if (errorMessage) {
               document.body.removeChild(errorMessage);
@@ -30,7 +30,7 @@
 
     load:
       function (onLoad, onError) {
-        const URL = 'https://js.dump.academy/keksobooking/data';
+        const URL = 'https://js.dump.academy/keksobooking/datad';
         const xhr = new XMLHttpRequest();
         xhr.responseType = 'json';
 

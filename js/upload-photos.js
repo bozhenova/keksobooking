@@ -4,7 +4,7 @@
 
   const adFormPhoto = document.querySelector('.ad-form__photo');
   const photoGallery = document.querySelector('.ad-form__photo-gallery');
-  let photoChooser = document.querySelector('#images');
+  const photoChooser = document.querySelector('#images');
 
   window.uploadPhotos = function () {
     if (this.files && this.files[0]) {
@@ -31,20 +31,20 @@
         adFormPhoto.remove();
       }
       photoGallery.append(fragment);
-      let sortable = Sortable.create(photoGallery);
+      const sortable = Sortable.create(photoGallery);
     }
 
   };
 
   function mouseEnterHandler(e) {
-    let target = e.target;
+    const target = e.target;
     target.classList.add('ad-form__photo--delete');
 
     target.addEventListener('click', photoClickHandler);
   }
 
   function mouseLeaveHandler(e) {
-    let target = e.target;
+    const target = e.target;
     target.classList.remove('ad-form__photo--delete');
 
     adFormPhoto.removeEventListener('mouseenter', mouseEnterHandler);
@@ -52,7 +52,7 @@
   }
 
   function photoClickHandler(e) {
-    let photo = e.currentTarget;
+    const photo = e.currentTarget;
     photoGallery.removeChild(photo);
     photoChooser.value = '';
 
@@ -62,7 +62,7 @@
   }
 
   function createEpmtyPhoto() {
-    let emptyPhoto = document.createElement('div');
+    const emptyPhoto = document.createElement('div');
     emptyPhoto.classList.add('ad-form__photo');
 
     return emptyPhoto;

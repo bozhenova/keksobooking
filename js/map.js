@@ -66,16 +66,26 @@
     fragment.append(card);
     map.append(fragment);
     const closeButton = map.querySelector('.popup__close');
+    closeButton.tabIndex = 0;
     closeButton.addEventListener('click', deleteCard);
+    document.addEventListener('keydown', escPressHandler);
+  }
+
+  function escPressHandler() {
+    if (window.utils.isEscEvent) {
+      deleteCard();
+    }
   }
 
   function deleteCard() {
     let card = map.querySelector('.popup');
+    const closeButton = map.querySelector('.popup__close');
     if (card) {
       card.remove();
       closeButton.removeEventListener('click', deleteCard);
+      document.removeEventListener('keydown', escPressHandler);
     }
-  };
+  }
 
 
   window.map = {
