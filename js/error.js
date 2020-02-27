@@ -18,15 +18,15 @@
     document.body.append(fragment);
   }
 
-  function escPressHandler() {
-    if (window.utils.isEscEvent) {
+  function escPressHandler(e) {
+    if (window.utils.isEscEvent(e)) {
       closeError();
     }
   }
 
   function closeError() {
     const errorOverlay = document.querySelector('.error');
-    document.body.removeChild(errorOverlay);
+    errorOverlay.remove();
 
     document.removeEventListener('keydown', escPressHandler);
     document.removeEventListener('click', closeError);

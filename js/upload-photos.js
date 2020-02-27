@@ -53,7 +53,7 @@
 
   function photoClickHandler(e) {
     const photo = e.currentTarget;
-    photoGallery.removeChild(photo);
+    photo.remove();
     photoChooser.value = '';
 
     if (photoGallery.querySelectorAll('.ad-form__photo').length === 0) {
@@ -71,7 +71,7 @@
   function deleteEmptyPhotos() {
     if (!photoGallery.querySelector('.ad-form__photo img')) {
       photoGallery.querySelectorAll('.ad-form__photo').forEach((preview) => {
-        photoGallery.removeChild(preview);
+        preview.remove();
       });
     }
   }
@@ -79,7 +79,7 @@
   window.deleteUploadedPhotos = function () {
     if (photoGallery.querySelector('.ad-form__photo img')) {
       photoGallery.querySelectorAll('.ad-form__photo').forEach((preview) => {
-        photoGallery.removeChild(preview);
+        preview.remove();
       });
       photoGallery.appendChild(createEpmtyPhoto());
     }

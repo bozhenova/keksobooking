@@ -71,8 +71,8 @@
     document.addEventListener('keydown', escPressHandler);
   }
 
-  function escPressHandler() {
-    if (window.utils.isEscEvent) {
+  function escPressHandler(e) {
+    if (window.utils.isEscEvent(e)) {
       deleteCard();
     }
   }

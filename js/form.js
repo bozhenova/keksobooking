@@ -109,15 +109,15 @@
     document.addEventListener('keydown', escPressHandler);
   }
 
-  function escPressHandler() {
-    if (window.utils.isEscEvent) {
+  function escPressHandler(e) {
+    if (window.utils.isEscEvent(e)) {
       closeSuccess();
     }
   }
 
   function closeSuccessOverlay() {
     const successOverlay = document.querySelector('.success');
-    document.body.removeChild(successOverlay);
+    successOverlay.remove();
 
     document.removeEventListener('keydown', escPressHandler);
     document.removeEventListener('click', closeSuccessOverlay);

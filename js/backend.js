@@ -12,7 +12,7 @@
           const errorMessage = document.querySelector('.error__message');
           if (xhr.status === 200) {
             if (errorMessage) {
-              document.body.removeChild(errorMessage);
+              errorMessage.remove();
             }
             onLoad(xhr.response);
           } else {

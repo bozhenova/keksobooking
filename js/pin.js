@@ -3,11 +3,11 @@
 (function () {
   const ADS_QUANTITY = 5;
   const mapPins = document.querySelector('.map__pins');
-  const mapPinTemplate = document.querySelector('#pin').content;
 
   window.pin = {
     createPin:
       function (ad) {
+        const mapPinTemplate = document.querySelector('#pin').content.querySelector('.map__pin');
         const pin = mapPinTemplate.cloneNode(true);
         const pinImage = pin.querySelector('img');
         pin.style.left = `${ad.location.x + pinImage.offsetWidth / 2}px`;
