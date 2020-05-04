@@ -26,9 +26,9 @@
           pin.addEventListener('click', () => {
             window.map.renderCard(ads[i]);
           });
-          fragment.append(pin);
+          fragment.appendChild(pin);
         }
-        mapPins.append(fragment);
+        mapPins.appendChild(fragment);
       },
 
     deleteSimilarPins:

@@ -104,7 +104,7 @@
     resetSettings();
     const successTemplate = document.querySelector('#success').content;
     const success = successTemplate.cloneNode(true);
-    document.body.append(success);
+    document.body.appendChild(success);
     document.addEventListener('click', closeSuccessOverlay);
     document.addEventListener('keydown', escPressHandler);
   }

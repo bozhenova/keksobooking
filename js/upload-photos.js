@@ -21,16 +21,16 @@
         photo.style.borderRadius = '5px';
         photoElement.addEventListener('mouseenter', mouseEnterHandler);
         photoElement.addEventListener('mouseleave', mouseLeaveHandler);
-        photoElement.append(photo);
+        photoElement.appendChild(photo);
         photo.onload = () => {
           URL.revokeObjectURL(this.src);
         }
-        fragment.append(photoElement);
+        fragment.appendChild(photoElement);
       }
       if (adFormPhoto) {
         adFormPhoto.remove();
       }
-      photoGallery.append(fragment);
+      photoGallery.appendChild(fragment);
       const sortable = Sortable.create(photoGallery);
     }
 
@@ -57,7 +57,7 @@
     photoChooser.value = '';
 
     if (photoGallery.querySelectorAll('.ad-form__photo').length === 0) {
-      photoGallery.append(createEpmtyPhoto());
+      photoGallery.appendChild(createEpmtyPhoto());
     }
   }
 

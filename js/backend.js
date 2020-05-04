@@ -30,7 +30,7 @@
 
     load:
       function (onLoad, onError) {
-        const URL = 'https://js.dump.academy/keksobooking/data';
+        const URL = 'https://cors-anywhere.herokuapp.com/https://js.dump.academy/keksobooking/data';
         const xhr = new XMLHttpRequest();
         xhr.responseType = 'json';
 

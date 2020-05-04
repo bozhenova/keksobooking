@@ -14,8 +14,8 @@
     const fragment = document.createDocumentFragment();
 
     error.querySelector('.error__message').textContent = message;
-    fragment.append(error);
-    document.body.append(fragment);
+    fragment.appendChild(error);
+    document.body.appendChild(fragment);
   }
 
   function escPressHandler(e) {

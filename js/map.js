@@ -26,9 +26,9 @@
     for (let i = 0; i < ad.offer.features.length; i++) {
       const newFeature = featureElement.cloneNode(true);
       newFeature.classList.add(`popup__feature--${ad.offer.features[i]}`);
-      featuresFragment.append(newFeature);
+      featuresFragment.appendChild(newFeature);
     }
-    card.querySelector('.popup__features').append(featuresFragment);
+    card.querySelector('.popup__features').appendChild(featuresFragment);
   }
 
   function addPhotos(ad) {
@@ -41,9 +41,9 @@
       photo.src = `${ad.offer.photos[i]}`;
       photo.width = 45;
       photo.height = 40;
-      picturesFragment.append(photo);
+      picturesFragment.appendChild(photo);
     }
-    card.querySelector('.popup__photos').append(picturesFragment);
+    card.querySelector('.popup__photos').appendChild(picturesFragment);
   }
 
   function createCard(ad) {
@@ -63,8 +63,8 @@
   function renderCard(ad) {
     const fragment = document.createDocumentFragment();
     const card = createCard(ad);
-    fragment.append(card);
-    map.append(fragment);
+    fragment.appendChild(card);
+    map.appendChild(fragment);
     const closeButton = map.querySelector('.popup__close');
     closeButton.tabIndex = 0;
     closeButton.addEventListener('click', deleteCard);
